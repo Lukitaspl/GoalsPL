@@ -1,0 +1,89 @@
+# Campañas de GoalsPL. Lo normal es crearlas y editarlas con /goals admin.
+# Si editas a mano, usa /goals reload. No cambies el ID (la clave) de una campaña: el progreso va unido a él.
+# Estas son de ejemplo y empiezan en borrador: no cuentan hasta que se inician (/goals start <id>).
+goals:
+  zombie_hunt:
+    name: <dark_green>Caza de zombis
+    description: Entre todos, derrotad 500 zombis esta semana.
+    icon: ZOMBIE_HEAD
+    type: KILL_ENTITY
+    targets: [ZOMBIE, HUSK, DROWNED, ZOMBIE_VILLAGER]
+    goal: 500
+    worlds: []
+    duration: 7d
+    deadline: ''
+    min-contribution: 5
+    max-contribution: 0
+    end-policy: KEEP
+    next: ''
+    announce: {start: true, end: true}
+    messages: {start: '', complete: ''}
+    bossbar: {enabled: true, color: GREEN, overlay: NOTCHED_10}
+    milestones:
+      '50':
+        policy: PARTICIPANTS
+        announce: true
+        rewards:
+          - 'ITEM: IRON_INGOT 8'
+      '100':
+        policy: PARTICIPANTS
+        announce: true
+        rewards:
+          - 'ITEM: DIAMOND 2'
+          - 'BROADCAST: <green>¡La caza de zombis se ha completado!'
+    personal:
+      '50':
+        - 'ITEM: GOLDEN_APPLE 1'
+    top:
+      '1':
+        - 'ITEM: DIAMOND 5'
+  mining_week:
+    name: <gray>Semana minera
+    description: Picad menas de hierro, oro y diamante.
+    icon: IRON_PICKAXE
+    type: BREAK_BLOCK
+    targets: [IRON_ORE, DEEPSLATE_IRON_ORE, GOLD_ORE, DEEPSLATE_GOLD_ORE, DIAMOND_ORE, DEEPSLATE_DIAMOND_ORE]
+    goal: 2000
+    worlds: []
+    duration: 7d
+    deadline: ''
+    min-contribution: 10
+    max-contribution: 300
+    end-policy: KEEP
+    next: harvest_donation
+    announce: {start: true, end: true}
+    messages: {start: '', complete: ''}
+    bossbar: {enabled: true, color: BLUE, overlay: PROGRESS}
+    milestones:
+      '25': {policy: COMMUNITY, announce: true, rewards: ['ITEM: BREAD 8']}
+      '50': {policy: PARTICIPANTS, announce: true, rewards: ['ITEM: IRON_INGOT 16']}
+      '75': {policy: PARTICIPANTS, announce: true, rewards: ['ITEM: GOLD_INGOT 16']}
+      '100': {policy: PARTICIPANTS, announce: true, rewards: ['ITEM: DIAMOND 3']}
+    personal: {}
+    top: {}
+  harvest_donation:
+    name: <yellow>Donación de cosecha
+    description: Entregad trigo y zanahorias para el festival.
+    icon: WHEAT
+    type: DELIVER_ITEM
+    targets: [WHEAT, CARROT]
+    goal: 1000
+    worlds: []
+    duration: 3d
+    deadline: ''
+    min-contribution: 16
+    max-contribution: 200
+    end-policy: REFUND
+    next: ''
+    announce: {start: true, end: true}
+    messages: {start: '', complete: ''}
+    bossbar: {enabled: true, color: YELLOW, overlay: PROGRESS}
+    milestones:
+      '100':
+        policy: PARTICIPANTS
+        announce: true
+        rewards:
+          - 'ITEM: CAKE 1'
+          - 'MESSAGE: <yellow>¡Gracias por tu cosecha! Aportaste {contribution}.'
+    personal: {}
+    top: {}

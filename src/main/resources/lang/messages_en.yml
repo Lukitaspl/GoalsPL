@@ -1,0 +1,613 @@
+# GoalsPL texts in MiniMessage (https://docs.advntr.dev/minimessage/format.html).
+# New keys from each version are added automatically without touching the ones you changed.
+language: en
+prefix: '<dark_aqua>[<aqua>Community</aqua>]</dark_aqua> '
+no-permission: '<red>You do not have permission to do that.'
+
+announce:
+  started: '<green>New community goal: <name><green>! Target: <yellow><goal></yellow>. Time: <yellow><time></yellow>. Use <aqua>/goals</aqua> to see it.'
+  paused: '<yellow>The goal <name><yellow> is paused.'
+  resumed: '<green>The goal <name><green> is active again.'
+  milestone: '<gold>Milestone reached in <name><gold>: <yellow><percent>%</yellow>! (<progress>/<goal>)'
+  completed: '<green><bold>Goal completed!</bold> <name><green> reached <yellow><goal></yellow>. Thanks everyone!'
+  cancelled: '<red>The goal <name><red> has been cancelled.'
+  expired: '<gray>Time is up for <name><gray>: it reached <progress>/<goal> (<percent>%).'
+  top-header: '<gold>Top contributors to <name><gold>:'
+  top-line: '<yellow>#<rank></yellow> <white><player></white> <gray>- <amount>'
+
+bossbar:
+  title: '<name> <white><progress>/<goal></white> <gray>(<percent>%)'
+  title-timed: '<name> <white><progress>/<goal></white> <gray>(<percent>%) · <time>'
+
+rewards:
+  pending-added: '<yellow>Part of your reward could not be delivered (full inventory or another problem). It is pending: use <aqua>/goals claim</aqua>.'
+  claimed: '<green>You received <count> pending rewards.'
+  nothing: '<gray>You have no pending rewards.'
+  still-pending: '<yellow>You still have <count> rewards to receive (full inventory?). Try again with <aqua>/goals claim</aqua>.'
+  permission-expired: '<gray>Your temporary permission <white><permission></white> has expired.'
+
+deliver:
+  done: '<green>You delivered <yellow><amount></yellow> <item>. Thank you!'
+  nothing: '<red>Nothing to deliver: you do not have that item (without name or enchantments), the goal is complete or you reached your maximum.'
+  not-delivery: '<red>That goal is not a delivery goal.'
+  not-active: '<red>That goal is not active right now.'
+  not-accepted: '<red>That goal does not accept that item.'
+  wrong-world: '<red>That goal does not count in this world.'
+
+command:
+  unknown: '<red>Unknown subcommand: <value>. Use <aqua>/goals help</aqua>.'
+  player-only: '<red>Only a player can use that.'
+  missing-id: '<red>The campaign ID is missing.'
+  usage: '<red>Usage: <usage>'
+  reloaded: '<green>Configuration, texts, presets and campaigns reloaded.'
+  goals-header: '<aqua>Running goals (<count>):'
+  goals-line: '<gray>- <white><id></white> <name> <gray><progress>/<goal> (<percent>%) · <state>'
+  info: '<aqua><name> <gray>(<id>)<newline><gray>State: <white><state></white> · Type: <white><type></white> · Run #<run><newline><gray>Progress: <white><progress>/<goal></white> (<percent>%) · Participants: <white><participants></white> · Time: <white><time>'
+  milestone-done: '<green>  ✔ <percent>%'
+  milestone-todo: '<gray>  ✘ <percent>%'
+  top-header: '<gold>Leaderboard of <name><gold>:'
+  top-empty: '<gray>Nobody has contributed yet.'
+  progress-done: '<green>Progress of <id>: <yellow><progress>/<goal></yellow>.'
+  set-no-player: '<red>A player cannot be given with =value; use +n or -n for their contribution.'
+  unknown-player: '<red>I do not know any player called <value>.'
+  history-header: '<aqua>History of <id> (page <page>):'
+  history-empty: '<gray>No entries.'
+  history-line: '<gray><date> <white><campaign></white> <yellow><action></yellow> <gray>by <white><actor></white> <dark_gray><details>'
+
+help:
+  header: '<aqua>GoalsPL <version> - commands:'
+  line: '<yellow><usage></yellow> <gray>- <description>'
+  usage:
+    help: '/goals help'
+    goals: '/goals goals'
+    info: '/goals info <id>'
+    top: '/goals top <id>'
+    contribute: '/goals contribute <id>'
+    claim: '/goals claim'
+    admin: '/goals admin'
+    start: '/goals start <id>'
+    pause: '/goals pause <id>'
+    resume: '/goals resume <id>'
+    complete: '/goals complete <id>'
+    cancel: '/goals cancel <id>'
+    progress: '/goals progress <id> <+n|-n|=n> [player]'
+    history: '/goals history [id] [page]'
+    reload: '/goals reload'
+  description:
+    help: 'This help.'
+    goals: 'Active goals (menu; list in console).'
+    info: 'Details of a campaign.'
+    top: 'Contribution leaderboard.'
+    contribute: 'Open the material delivery menu.'
+    claim: 'Receive your pending rewards.'
+    admin: 'Admin panel.'
+    start: 'Start (publish) a campaign; if it already ended, a new run starts from zero.'
+    pause: 'Pause: stops counting and stops the clock.'
+    resume: 'Resume a paused campaign.'
+    complete: 'Complete now: gives missing milestones, leaderboard rewards and starts the next stage.'
+    cancel: 'Cancel (refunds deliveries if the campaign says so).'
+    progress: 'Add, subtract or set progress; with a player, also their contribution.'
+    history: 'History of actions, deliveries and rewards.'
+    reload: 'Reload config.yml, messages.yml, rewards.yml and goals.yml.'
+
+result:
+  done: '<green>Done (<id>).'
+  OK: '<green>Done.'
+  UNKNOWN: '<red>The campaign <id> does not exist.'
+  ALREADY_RUNNING: '<red><id> is already running.'
+  NOT_RUNNING: '<red><id> is not running.'
+  NOT_ACTIVE: '<red><id> is not active.'
+  NOT_PAUSED: '<red><id> is not paused.'
+  INVALID: '<red><id> has errors: open it in the editor and check the summary.'
+  DEADLINE_PAST: '<red>The deadline of <id> has already passed: change it before starting.'
+  READ_ONLY: '<red>goals.yml has a format error and cannot be saved from the game. Fix it and use /goals reload.'
+  IN_USE: '<red><id> is running: cancel or complete it before deleting it.'
+  EXISTS: '<red>There is already a campaign with that ID.'
+
+state:
+  DRAFT: 'Draft'
+  ACTIVE: 'Active'
+  PAUSED: 'Paused'
+  COMPLETED: 'Completed'
+  CANCELLED: 'Cancelled'
+  EXPIRED: 'Expired'
+
+objective:
+  KILL_ENTITY: 'Defeat mobs'
+  BREAK_BLOCK: 'Break blocks'
+  DELIVER_ITEM: 'Deliver materials'
+  ADMIN: 'Admin progress'
+objective-help:
+  KILL_ENTITY:
+    - '<gray>Counts each listed mob killed'
+    - '<gray>by a player in the chosen worlds.'
+  BREAK_BLOCK:
+    - '<gray>Counts the listed blocks broken by'
+    - '<gray>players (not the ones they placed).'
+  DELIVER_ITEM:
+    - '<gray>Players deliver the requested items'
+    - '<gray>from a menu, with confirmation.'
+  ADMIN:
+    - '<gray>Only advances with /goals progress or'
+    - '<gray>the API of other plugins.'
+
+policy:
+  COMMUNITY: 'the whole community'
+  PARTICIPANTS: 'participants (minimum contribution)'
+
+end-policy:
+  KEEP: 'stay in the campaign'
+  REFUND: 'are refunded'
+
+reward-type:
+  COMMAND: 'Command (per player)'
+  MESSAGE: 'Message'
+  ITEM: 'Items'
+  PERMISSION: 'Temporary permission'
+  BROADCAST: 'Broadcast'
+  GLOBAL_COMMAND: 'Command (once)'
+  EVENT: 'EventsPL event'
+reward-lore:
+  COMMAND:
+    - '<gray>Console command for each player.'
+    - '<gray>E.g.: <white>eco give {player} 100'
+  MESSAGE:
+    - '<gray>Private message to the player.'
+  ITEM:
+    - '<gray>Plain items: <white>MATERIAL amount'
+    - '<gray>What does not fit stays pending.'
+  PERMISSION:
+    - '<gray>Permission for a while:'
+    - '<white>permission duration <gray>(e.g. essentials.fly 1h)'
+  BROADCAST:
+    - '<gray>Message to the whole server, once.'
+  GLOBAL_COMMAND:
+    - '<gray>Console command only once,'
+    - '<gray>without a player.'
+  EVENT:
+    - '<gray>Starts an EventsPL event'
+    - '<gray>by its ID (if installed).'
+reward-help:
+  COMMAND: 'Command without slash, e.g. eco give {player} 100'
+  MESSAGE: 'MiniMessage text, e.g. <green>Thanks {player}'
+  ITEM: 'MATERIAL amount, e.g. DIAMOND 3'
+  PERMISSION: 'permission duration, e.g. essentials.fly 1h'
+  BROADCAST: 'MiniMessage text for everyone'
+  GLOBAL_COMMAND: 'Command without slash, e.g. weather clear'
+  EVENT: 'EventsPL event ID'
+
+history-action:
+  CREATED: 'Created'
+  EDITED: 'Edited'
+  DELETED: 'Deleted'
+  STARTED: 'Started'
+  PAUSED: 'Paused'
+  RESUMED: 'Resumed'
+  COMPLETED: 'Completed'
+  CANCELLED: 'Cancelled'
+  EXPIRED: 'Expired'
+  MILESTONE: 'Milestone'
+  PROGRESS: 'Progress adjustment'
+  DELIVERY: 'Delivery'
+  REFUND: 'Refund'
+  REWARD: 'Reward delivered'
+  REWARD_FAILED: 'Reward pending or failed'
+  NEXT: 'Next stage'
+  ERROR: 'Error'
+
+validation:
+  id-invalid: 'Invalid ID (<detail>): lowercase, numbers, _ and -, 2 to 32 long.'
+  name-empty: 'The name is missing.'
+  goal-invalid: 'The required amount is not valid (<detail>).'
+  icon-unknown: 'The icon <detail> does not exist in this version (paper will be used).'
+  targets-empty: 'At least one item to deliver is needed.'
+  targets-any: 'No targets: anything counts.'
+  targets-ignored: 'Targets are not used with this type.'
+  target-unknown: 'Unknown target for this type: <detail>.'
+  world-unknown: 'The world <detail> is not loaded right now.'
+  duration-invalid: 'Invalid duration (<detail>).'
+  deadline-invalid: 'Invalid deadline (<detail>): use YYYY-MM-DD HH:MM.'
+  deadline-past: 'The deadline has already passed.'
+  min-invalid: 'The minimum cannot be negative.'
+  max-invalid: 'The maximum cannot be negative.'
+  min-above-max: 'The minimum is above the maximum (<detail>).'
+  max-needs-players: 'With that maximum at least <detail> players are needed to complete it.'
+  next-self: 'The next stage cannot be the same campaign.'
+  next-unknown: 'The next stage <detail> does not exist (yet).'
+  bossbar-color-invalid: 'Invalid bossbar color (<detail>).'
+  bossbar-overlay-invalid: 'Invalid bossbar style (<detail>).'
+  milestone-invalid: 'Invalid milestone (<detail>): 1 to 100 %.'
+  milestone-duplicate: 'Repeated milestone: <detail>%.'
+  personal-invalid: 'Invalid personal milestone (<detail>).'
+  personal-unreachable: 'The personal milestone <detail> is above the per-player maximum: nobody will reach it.'
+  personal-global: 'Global reward in a personal milestone (runs once per player): <detail>.'
+  top-invalid: 'Invalid rank (<detail>).'
+  top-global: 'Global reward in the leaderboard: <detail>.'
+  placeholder-unknown: 'Unknown placeholder: <detail>.'
+  no-rewards: 'It has no rewards.'
+  reward-invalid: 'Invalid reward (<detail>): format TYPE: value.'
+  reward-empty: 'Empty reward: <detail>.'
+  command-blocked: 'Command blocked in config.yml: <detail>.'
+  global-player: '{player} in a run-once command will be empty: <detail>.'
+  item-invalid: 'Badly written items (MATERIAL amount, max 2304): <detail>.'
+  permission-invalid: 'Badly written permission (permission duration): <detail>.'
+  events-missing: 'EventsPL is not installed; this reward will fail: <detail>.'
+  type-invalid: 'Unknown objective type (<detail>).'
+  end-policy-invalid: 'Unknown end-policy (<detail>).'
+  policy-invalid: 'Unknown milestone policy (<detail>).'
+
+gui:
+  error: '<red>Something went wrong with that button; it is in the server log.'
+  common:
+    back:
+      name: '<gray>Back'
+      lore: []
+    close:
+      name: '<red>Close'
+      lore: []
+    empty:
+      name: '<gray>Nothing here'
+      lore: []
+    gone:
+      name: '<red>This campaign no longer exists'
+      lore: []
+    previous:
+      name: '<yellow>Previous page'
+      lore: ['<gray>Go to <page> of <pages>']
+    next:
+      name: '<yellow>Next page'
+      lore: ['<gray>Go to <page> of <pages>']
+    page: '<white>Page <page>/<pages> <gray>(<count>)'
+    enabled: 'yes'
+    disabled: 'no'
+    no-limit: 'no limit'
+    not-running: '-'
+    none: 'none'
+    any: 'any'
+    all-worlds: 'all'
+    default: 'the one in messages.yml'
+  confirm:
+    title: '<dark_red>Are you sure?'
+    question: '<yellow>Confirm?'
+    accept:
+      name: '<green>Yes, confirm'
+      lore: []
+    cancel:
+      name: '<red>No, go back'
+      lore: []
+  input:
+    hint: '<gray>Type in chat or click '
+    cancel-button: '<red><bold>[Cancel]'
+    expired: '<gray>Time to type ran out; nothing was changed.'
+    id: '<aqua>Type the campaign ID (lowercase, numbers, _ and -). It cannot be changed later.'
+    name: '<aqua>Type the name (MiniMessage allowed, e.g. <gray>\<gold>Zombie hunt</gray>).'
+    description: '<aqua>Type the description (or - to leave it empty).'
+    icon: '<aqua>Type the icon material (or hold the item when clicking).'
+    goal: '<aqua>Type the required amount.'
+    duration: '<aqua>Type the duration (e.g. 7d, 12h, 1d12h) or - for no limit.'
+    deadline: '<aqua>Type the deadline as YYYY-MM-DD HH:MM or - to remove it.'
+    min: '<aqua>Type the minimum contribution for participant rewards.'
+    max: '<aqua>Type the maximum contribution that counts per player (0 = no limit).'
+    next: '<aqua>Type the ID of the campaign that starts when this one completes (or - for none).'
+    message: '<aqua>Type the message (MiniMessage, placeholders {goal_name} {goal} {progress} {percent}) or - for the one in messages.yml.'
+    targets: '<aqua>Type the targets separated by spaces or commas (e.g. ZOMBIE SKELETON or IRON_ORE).'
+    percent: '<aqua>Type the milestone percentage (1-100).'
+    personal: '<aqua>Type the personal contribution that gives the reward.'
+    rank: '<aqua>Type the leaderboard rank (1-45).'
+    reward: '<aqua>Reward <white><type></white>: <gray><help></gray>. Placeholders: {player} {goal_name} {contribution} {rank}…'
+    adjust: '<aqua>Type the adjustment: <white>+n</white> adds, <white>-n</white> subtracts, <white>=n</white> sets the total.'
+    adjust-player: '<aqua>Type how much to add (or subtract with -) to the contribution of <white><player></white> and the total.'
+    bad-id: '<red>Invalid ID: lowercase, numbers, _ and -, 2 to 32 characters.'
+    bad-number: '<red>That is not a number.'
+    bad-range: '<red>It must be a number between <min> and <max>.'
+    bad-duration: '<red>Invalid duration: <value> (e.g. 7d, 12h, 90m).'
+    bad-date: '<red>Invalid date: <value> (YYYY-MM-DD HH:MM).'
+    bad-material: '<red>The item <value> does not exist.'
+  draft:
+    create-cancelled: '<gray>Creation cancelled; nothing was saved.'
+    edit-cancelled: '<gray>Editing cancelled; nothing was changed.'
+  main:
+    title: '<dark_aqua>Community goals'
+    goals:
+      name: '<green>Active goals'
+      lore: ['<gray>Running: <white><count>', '<yellow>Click to see them']
+    rewards:
+      name: '<gold>My rewards'
+      lore: ['<gray>Rewards waiting to be delivered', '<yellow>Click to see or claim them']
+    admin:
+      name: '<red>Administration'
+      lore: ['<gray>Create, edit and control campaigns']
+  goals:
+    title: '<dark_aqua>Active goals'
+    entry:
+      - '<gray><description>'
+      - '<gray>State: <white><state></white> · <white><type>'
+      - '<bar> <white><progress>/<goal> <gray>(<percent>%)'
+      - '<gray>Time: <white><time></white> · Participants: <white><participants>'
+    mine:
+      - '<gray>Your contribution: <yellow><amount></yellow> <gray>(rank <rank>)'
+      - '<yellow>Click for details'
+  campaign:
+    title: '<dark_aqua>Community goal'
+    info:
+      - '<gray><description>'
+      - '<gray>State: <white><state></white> · <white><type>'
+      - '<bar> <white><progress>/<goal> <gray>(<percent>%)'
+      - '<gray>Time: <white><time></white> · Participants: <white><participants>'
+    milestones: '<gold>Community milestones'
+    milestone-done: '<green>✔ <percent>% <gray>(for <policy>)'
+    milestone-todo: '<gray>✘ <percent>% (for <policy>)'
+    personal: '<aqua>My contribution'
+    personal-head:
+      - '<gray>You contributed <yellow><amount></yellow> (rank <rank>)'
+      - ''
+    personal-done: '<green>✔ on reaching <amount>'
+    personal-todo: '<gray>✘ on reaching <amount>'
+    top: '<yellow>Leaderboard'
+    top-line: '<yellow>#<rank></yellow> <white><player></white> <gray>- <amount>'
+    top-reward: '<gold>Reward for rank <rank>:'
+    none: '<gray>None'
+    rules: '<white>Rules'
+    deliver:
+      name: '<green>Deliver materials'
+      lore: ['<gray>Choose what and how much to deliver;', '<gray>you confirm before anything is taken.']
+  rules:
+    type: '<gray>Type: <white><type>'
+    targets: '<gray>Counts: <white><targets>'
+    worlds: '<gray>Worlds: <white><worlds>'
+    min: '<gray>Minimum for participant rewards: <white><amount>'
+    max: '<gray>Maximum counted per player: <white><amount>'
+    refund: '<gray>If cancelled or expired: <white>deliveries are refunded'
+    keep: '<gray>If cancelled or expired: <white>deliveries are not refunded'
+    plain: '<gray>Plain items only (no name, enchantments or damage).'
+  deliver:
+    title: '<dark_green>Deliver materials'
+    entry:
+      - '<gray>You have: <white><have>'
+      - '<gray>You can deliver: <yellow><can>'
+      - '<yellow>Left: 1 · Right: 16 · Shift: all'
+    status:
+      - '<gray>Progress: <white><progress>/<goal>'
+      - '<gray>Your contribution: <yellow><amount>'
+    confirm-title: '<dark_green>Confirm delivery'
+    confirm:
+      - '<gray>You will deliver <yellow><amount></yellow> <item>'
+      - '<gray>to <name><gray>. They will be taken from your inventory.'
+  rewards:
+    title: '<gold>My pending rewards'
+    entry-name: '<gold>Reward from <campaign>'
+    entry: ['<gray>Waiting to be delivered:']
+    claim:
+      name: '<green>Claim all'
+      lore: ['<gray><count> pending', '<gray>Make room in your inventory first.']
+  admin:
+    title: '<dark_red>Campaigns'
+    entry:
+      - '<gray>ID: <white><id></white> · <white><type>'
+      - '<gray>State: <white><state></white> · run #<run>'
+      - '<bar> <white><progress>/<goal> <gray>(<percent>%)'
+      - '<gray>Time: <white><time></white> · Participants: <white><participants>'
+      - '<yellow>Click to manage it'
+    create:
+      name: '<green>Create campaign'
+      lore: ['<gray>Asks for an ID and opens the editor']
+    history:
+      name: '<white>Global history'
+      lore: ['<gray>Latest actions of all campaigns']
+    reload:
+      name: '<aqua>Reload'
+      lore: ['<gray>config.yml, messages.yml, rewards.yml and goals.yml']
+  campaign-admin:
+    title: '<dark_red>Campaign <id>'
+    start:
+      name: '<green>Start'
+      lore: ['<gray>Publishes the campaign. If it already ended,', '<gray>a new run starts from zero.']
+    pause:
+      name: '<yellow>Pause'
+      lore: ['<gray>Stops counting and stops the clock.']
+    resume:
+      name: '<green>Resume'
+      lore: ['<gray>Counts again with the time that was left.']
+    complete:
+      name: '<dark_green>Complete now'
+      lore: ['<gray>Raises progress to the goal and gives', '<gray>missing milestones and the leaderboard.']
+    cancel:
+      name: '<red>Cancel'
+      lore: ['<gray>Ends without completing (refunds', '<gray>deliveries if configured).']
+    adjust:
+      name: '<aqua>Adjust progress'
+      lore: ['<gray>Add, subtract or set the total.']
+    edit:
+      name: '<white>Edit'
+      lore: ['<gray>Opens the editor on a copy.', '<gray>Nothing is saved until you review.']
+    contributions:
+      name: '<yellow>Contributions'
+      lore: ['<gray>Players who contributed: <white><count>']
+    rewards:
+      name: '<gold>Rewards'
+      lore: ['<gray>Delivered and pending']
+    history:
+      name: '<white>History'
+      lore: ['<gray>Actions, deliveries and rewards']
+    clone:
+      name: '<white>Clone'
+      lore: ['<gray>Copy with another ID']
+    delete:
+      name: '<dark_red>Delete'
+      lore: ['<gray>Removes the campaign from goals.yml.', '<gray>The history is kept.']
+    editing-running: '<yellow>This campaign is running: changes apply when saved and progress is kept.'
+    confirm-complete: ['<gray><white><id></white> will be completed right now', '<gray>and its rewards delivered.']
+    confirm-cancel: ['<gray><white><id></white> will be cancelled.', '<gray>This cannot be undone.']
+    confirm-delete: ['<gray><white><id></white> will be deleted from goals.yml.', '<gray>This cannot be undone.']
+  contributions:
+    title: '<dark_red>Contributions to <id>'
+    entry: ['<gray>Contribution: <yellow><amount>', '<gray>Rank: <white><rank>', '<yellow>Click to adjust (with permission)']
+  reward-log:
+    title: '<dark_red>Rewards of <id>'
+    delivered: 'delivered'
+    pending: 'pending'
+    entry:
+      - '<gray>State: <white><status></white> · attempts: <white><attempts>'
+      - '<gray>Date: <white><date></white> · key: <white><key>'
+      - '<gray>Last error: <white><error>'
+  history:
+    title: '<dark_red>History'
+    entry: ['<gray><date>', '<gray>Campaign: <white><campaign>', '<gray>By: <white><actor>', '<gray><details>']
+  editor:
+    title: '<dark_red>Edit <id>'
+    name:
+      name: '<white>Name'
+      lore: ['<gray>Now: <value>', '<yellow>Click to change']
+    description:
+      name: '<white>Description'
+      lore: ['<gray>Now: <value>', '<yellow>Click to change']
+    icon:
+      name: '<white>Icon'
+      lore: ['<gray>Now: <white><value>', '<yellow>Click holding an item', '<yellow>or empty-handed to type it']
+    type:
+      name: '<white>Objective type'
+      lore: ['<gray>Now: <white><value>', '<yellow>Click to change (clears the targets)']
+    targets:
+      name: '<white>Targets'
+      lore: ['<gray><count>: <white><value>', '<yellow>Click to edit']
+    goal:
+      name: '<white>Required amount'
+      lore: ['<gray>Now: <white><value>', '<yellow>Click to change']
+    worlds:
+      name: '<white>Worlds'
+      lore: ['<gray>Now: <white><value>', '<yellow>Click to choose']
+    duration:
+      name: '<white>Duration'
+      lore: ['<gray>Now: <white><value>', '<yellow>Click to change']
+    deadline:
+      name: '<white>Deadline'
+      lore: ['<gray>Now: <white><value>', '<gray>Whichever comes first applies', '<gray>(duration or date).', '<yellow>Click to change']
+    min:
+      name: '<white>Minimum contribution'
+      lore: ['<gray>Now: <white><value>', '<gray>For participant rewards.', '<yellow>Click to change']
+    max:
+      name: '<white>Maximum contribution'
+      lore: ['<gray>Now: <white><value>', '<gray>Anything above does not count,', '<gray>so a few players cannot hog it.', '<yellow>Click to change']
+    end-policy:
+      name: '<white>Deliveries if cancelled or expired'
+      lore: ['<gray>Now: <white><value>', '<yellow>Click to change']
+    next:
+      name: '<white>Next stage'
+      lore: ['<gray>Now: <white><value>', '<gray>Starts automatically when this completes.', '<yellow>Click to change']
+    milestones:
+      name: '<gold>Community milestones'
+      lore: ['<gray><count> milestones (percentages of the total)', '<yellow>Click to edit']
+    personal:
+      name: '<aqua>Personal milestones'
+      lore: ['<gray><count> per-player amounts', '<yellow>Click to edit']
+    top:
+      name: '<yellow>Leaderboard'
+      lore: ['<gray><count> ranks with rewards', '<yellow>Click to edit']
+    announce-start:
+      name: '<white>Announce start'
+      lore: ['<gray>Now: <white><value>']
+    announce-end:
+      name: '<white>Announce end'
+      lore: ['<gray>Now: <white><value>']
+    start-message:
+      name: '<white>Start message'
+      lore: ['<gray>Now: <value>', '<yellow>Click to change']
+    complete-message:
+      name: '<white>Completion message'
+      lore: ['<gray>Now: <value>', '<yellow>Click to change']
+    bossbar:
+      name: '<white>Bossbar'
+      lore: ['<gray>Now: <white><value>']
+    bossbar-color:
+      name: '<white>Bossbar color'
+      lore: ['<gray>Now: <white><value>', '<yellow>Click to change']
+    bossbar-overlay:
+      name: '<white>Bossbar style'
+      lore: ['<gray>Now: <white><value>', '<yellow>Click to change']
+    discard:
+      name: '<red>Discard'
+      lore: ['<gray>Leaves without saving anything.']
+    review:
+      name: '<green>Review and save'
+      lore: ['<gray>Summary, errors and warnings', '<gray>before saving or publishing.']
+  targets:
+    title: '<dark_red>Targets'
+    entry: ['<yellow>Shift + right click to remove']
+    add:
+      name: '<green>Add by typing'
+      lore: ['<gray>Several separated by spaces or commas']
+    hand:
+      name: '<green>Add the one in hand'
+      lore: ['<gray>The type of the item you hold']
+    clear:
+      name: '<red>Remove all'
+      lore: ['<gray>Without targets anything counts', '<gray>(except for deliveries).']
+    empty-hand: '<red>You are not holding anything.'
+    rejected: '<red>Not valid for this type: <value>'
+  worlds:
+    title: '<dark_red>Worlds'
+    selected: ['<green>Counts here', '<yellow>Click to remove']
+    unselected: ['<gray>Not selected', '<yellow>Click to add']
+    all:
+      name: '<aqua>All worlds'
+      lore: ['<gray>Unselects all: counts in any world']
+  milestones:
+    title: '<dark_red>Community milestones'
+    name: '<gold>Milestone <percent>%'
+    entry:
+      - '<gray>For: <white><policy>'
+      - '<gray>Announce: <white><announce>'
+      - '<gray>Rewards: <white><count>'
+      - '<yellow>Left: rewards · Right: who gets them'
+      - '<yellow>Q: announce · Shift + right: delete'
+    add:
+      name: '<green>Add milestone'
+      lore: ['<gray>Type a percentage']
+    defaults:
+      name: '<aqua>25, 50, 75 and 100 %'
+      lore: ['<gray>Adds the usual milestones that are missing']
+  personal:
+    title: '<dark_red>Personal milestones'
+    name: '<aqua>On contributing <amount>'
+    entry: ['<gray>Rewards: <white><count>', '<yellow>Click: rewards · Shift + right: delete']
+    add:
+      name: '<green>Add personal milestone'
+      lore: ['<gray>Type an amount']
+  top:
+    title: '<dark_red>Leaderboard'
+    name: '<yellow>Rank <rank>'
+    entry: ['<gray>Rewards: <white><count>', '<yellow>Click: rewards · Shift + right: delete']
+    add:
+      name: '<green>Add rank'
+      lore: ['<gray>Type the rank number']
+  reward-list:
+    title: '<dark_red>Rewards: <label>'
+    choose: '<dark_red>Choose'
+    entry: ['<white><value>', '<yellow>Click: change · Shift + right: remove']
+    add:
+      name: '<green>Add reward'
+      lore: ['<gray>Choose the type and type the value']
+    preset:
+      name: '<aqua>From preset'
+      lore: ['<gray>Rewards prepared in rewards.yml']
+  summary:
+    title: '<dark_red>Review <id>'
+    info:
+      - '<gray>ID: <white><id></white> · <white><type>'
+      - '<gray>Goal: <white><goal>'
+      - '<gray>Milestones: <white><milestones></white> · personal: <white><personal></white> · ranks: <white><top>'
+      - '<gray>Next stage: <white><next>'
+    problems: '<white>Problems: <count>'
+    error: '<red>✘ <text>'
+    warning: '<yellow>⚠ <text>'
+    ok: '<green>All good.'
+    blocked:
+      name: '<red>Cannot be saved'
+      lore: ['<gray>Fix the errors in red.']
+    save:
+      name: '<green>Save'
+      lore: ['<gray>Writes the campaign to goals.yml.']
+    save-start:
+      name: '<dark_green>Save and start'
+      lore: ['<gray>Saves and publishes it now.']
+    saved: '<green>Campaign <id> saved to goals.yml.'

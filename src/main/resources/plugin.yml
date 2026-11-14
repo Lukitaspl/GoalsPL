@@ -1,0 +1,51 @@
+name: GoalsPL
+version: '${project.version}'
+main: com.plgroup.goalspl.GoalsPL
+api-version: '1.21.4'
+description: Metas comunitarias con menus (criaturas, bloques, entregas), hitos y recompensas.
+authors: [PLGroup]
+# Opcional: las recompensas EVENT inician eventos de EventsPL. Funciona igual sin el.
+softdepend: [EventsPL]
+
+# El servidor descarga esta libreria desde Maven Central la primera vez (no va dentro del JAR).
+libraries:
+  - org.xerial:sqlite-jdbc:${sqlite.version}
+
+# /goalspl (alias /goals) se registra con la API de comandos de Paper.
+permissions:
+  goalspl.admin:
+    description: Todo GoalsPL (panel, crear, editar, iniciar, ajustar, cancelar, recargar, comandos de consola).
+    default: op
+    children:
+      goalspl.use: true
+      goalspl.contribute: true
+      goalspl.view: true
+      goalspl.manage: true
+      goalspl.progress: true
+      goalspl.cancel: true
+      goalspl.reload: true
+      goalspl.commands: true
+  goalspl.use:
+    description: Abrir /goals, ver campanas activas, progreso, hitos, clasificacion y reclamar recompensas.
+    default: true
+  goalspl.contribute:
+    description: Entregar materiales a las campanas (las de criaturas y bloques cuentan sin permiso).
+    default: true
+  goalspl.view:
+    description: Abrir el panel de administracion en modo consulta (aportaciones, recompensas, historial).
+    default: op
+  goalspl.manage:
+    description: Crear, editar, clonar y borrar campanas; iniciar, pausar, reanudar y completar.
+    default: op
+  goalspl.progress:
+    description: Ajustar el progreso de una campana o la aportacion de un jugador.
+    default: op
+  goalspl.cancel:
+    description: Cancelar campanas.
+    default: op
+  goalspl.reload:
+    description: Recargar config.yml, messages.yml, rewards.yml y goals.yml.
+    default: op
+  goalspl.commands:
+    description: Anadir o cambiar recompensas que ejecutan comandos como consola (ademas de goalspl.manage).
+    default: op

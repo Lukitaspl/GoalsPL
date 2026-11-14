@@ -1,0 +1,30 @@
+# Plantillas de recompensas que se añaden con un clic desde el editor (botón "Desde plantilla").
+# Formato de cada recompensa: "TIPO: valor". Tipos: COMMAND, MESSAGE, ITEM, PERMISSION, BROADCAST, GLOBAL_COMMAND, EVENT.
+# Variables: {player} {goal_id} {goal_name} {progress} {goal} {percent} {contribution} {rank}
+presets:
+  diamonds:
+    name: '<aqua>3 diamantes'
+    icon: DIAMOND
+    rewards:
+      - 'ITEM: DIAMOND 3'
+  thanks:
+    name: '<green>Mensaje de agradecimiento'
+    icon: PAPER
+    rewards:
+      - 'MESSAGE: <green>Gracias por ayudar en <yellow>{goal_name}</yellow>: has aportado {contribution}.'
+  xp:
+    name: '<yellow>500 de experiencia'
+    icon: EXPERIENCE_BOTTLE
+    rewards:
+      - 'COMMAND: xp add {player} 500 points'
+  fly_hour:
+    name: '<light_purple>Vuelo una hora'
+    icon: FEATHER
+    rewards:
+      - 'PERMISSION: essentials.fly 1h'
+      - 'MESSAGE: <light_purple>Tienes vuelo durante una hora (/fly).'
+  announce:
+    name: '<gold>Anuncio a todo el servidor'
+    icon: BELL
+    rewards:
+      - 'BROADCAST: <gold>La comunidad ha llegado al {percent}% de <yellow>{goal_name}</yellow>.'

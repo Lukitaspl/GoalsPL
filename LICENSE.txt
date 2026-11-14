@@ -1,0 +1,42 @@
+PLGroup License
+Copyright (c) 2026 PLGroup. All rights reserved.
+
+This license applies to the software named GoalsPL, including its source code,
+compiled files, documentation, images and any other material in this
+repository (the "Software").
+
+1. What you can do
+
+   a) Download the Software from its official pages (the PLGroup projects on
+      Modrinth and GitHub) and use it, free of charge, on any number of
+      Minecraft servers, including servers that earn money.
+   b) Change its configuration and language files for your own servers.
+   c) Read the source code to learn how it works or to report problems.
+   d) Write your own plugins that use the public API of the Software, as long
+      as you do not copy its code into them.
+
+2. What you cannot do without written permission from PLGroup
+
+   a) Redistribute the Software, in original or modified form: re-uploading it
+      to other websites, mirrors, file hosts, server packs, modpacks or
+      marketplaces, or sharing the files in any other way.
+   b) Publish the Software, or any part of it, under your name or anyone
+      else's.
+   c) Modify, adapt, translate, decompile for reuse or create derivative works
+      from the source code, and use or publish those changes.
+   d) Sell, rent or sublicense the Software, or charge for access to it.
+   e) Remove or change this license or the copyright notices.
+
+3. Ownership
+
+   PLGroup keeps all rights, title and ownership of the Software. This license
+   only grants the rights listed in section 1, and it ends automatically if you
+   break any of its terms.
+
+4. No warranty
+
+   The Software is provided "as is", without warranty of any kind. PLGroup is
+   not liable for any damage or data loss that may result from its use.
+
+For permissions not covered by this license, contact PLGroup through the
+official Discord or by opening an issue on GitHub.

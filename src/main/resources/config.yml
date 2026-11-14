@@ -1,0 +1,58 @@
+# GoalsPL - ajustes generales.
+# No cambies config-version: el plugin la usa para actualizar este archivo.
+config-version: 1
+
+# Idioma de messages.yml la primera vez que se crea (es o en). Para cambiarlo despues, borra messages.yml.
+language: es
+
+# Zona horaria de las fechas limite (por ejemplo Europe/Madrid). Vacio = la del sistema.
+timezone: ''
+
+storage:
+  # Archivo SQLite dentro de la carpeta del plugin (solo cambia al reiniciar).
+  file: data/goalspl.db
+  # Cada cuantos segundos se guarda el progreso de criaturas y bloques (las entregas se guardan al momento).
+  save-interval-seconds: 2
+
+history:
+  # Dias que se guardan el historial, las entregas y las recompensas ya entregadas.
+  # Nunca se borran recompensas pendientes ni datos de la ejecucion actual de una campana.
+  retention-days: 90
+
+counting:
+  # Si cuentan las criaturas que salen de generadores (spawners).
+  spawner-mobs: false
+  # Si cuenta lo que se hace en modo creativo (el espectador nunca cuenta).
+  creative: false
+  # No contar bloques colocados por jugadores (evita colocar y romper el mismo bloque).
+  ignore-placed-blocks: true
+  # Los cultivos solo cuentan si estan crecidos del todo.
+  only-grown-crops: true
+
+rewards:
+  # Entregar lo pendiente al entrar al servidor.
+  deliver-on-join: true
+  # Cada cuantos minutos se reintenta lo pendiente de los conectados (0 = solo al entrar y con /goals claim).
+  retry-minutes: 5
+
+leaderboard:
+  # Puestos que se muestran en la clasificacion.
+  size: 10
+
+bossbar:
+  # Interruptor general de las bossbars (cada campana tiene ademas el suyo).
+  enabled: true
+
+console-commands:
+  # Comandos que nunca se ejecutan desde una recompensa, aunque alguien los escriba.
+  blocked:
+    - op
+    - deop
+    - stop
+    - restart
+    - reload
+    - whitelist
+    - ban-ip
+    - pardon-ip
+    - lp
+    - luckperms
